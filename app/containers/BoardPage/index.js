@@ -13,6 +13,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { connect } from 'react-redux';
 import { loadBoards } from 'containers/App/actions';
+import H2 from 'components/H2';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -40,6 +41,32 @@ export function BoardPage({
     fetchBoards()
    
   }, []);
+
+  console.log(Array.isArray(boards))
+
+  var boardList=[];
+
+        {boards.length > 0 ? 
+          boards.map(board => {
+            {console.log("aaa"+board.board_title)}     
+            // <H2>{board.board_title}</H2>               
+           let  aaa = (
+            <TableRow>
+              <TableCell>{board.board_no}</TableCell>
+              <TableCell>{board.user_no}</TableCell>
+              <TableCell>{board.board_title}</TableCell>
+              <TableCell>{board.board_content}</TableCell>
+              <TableCell>{board.board_regdate}</TableCell>
+              <TableCell>내용 보기</TableCell>
+              <TableCell>삭제하기</TableCell>
+            </TableRow>
+            )
+            boardList.push(aaa)
+          }):
+          <TableRow>
+            <TableCell>Nothing is here</TableCell>
+          </TableRow>
+        }
 
   return (
     <Paper>
@@ -73,19 +100,21 @@ export function BoardPage({
                 </TableRow>
             </TableHead>
             <TableBody>
-               <BoardList boards={boards} />
+               {/* <BoardList boards={boards} />\ */}
+{boardList}
+              
             </TableBody>
         </Table>
     </Paper>
   );
 }
 
-// 참고
-BoardPage.propTypes = {
-  fetchBoards: PropTypes.func,
-  boardLoding: PropTypes.bool,
-  boards: PropTypes.object,
-};
+// // 참고
+// BoardPage.propTypes = {
+//   fetchBoards: PropTypes.func,
+//   boardLoding: PropTypes.bool,
+//   boards: PropTypes.object,
+// };
   
 // get state and map it to props here. 
 const mapStateToProps = createStructuredSelector({

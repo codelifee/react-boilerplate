@@ -6,7 +6,8 @@ import TableCell from '@material-ui/core/TableCell'
 
 function BoardList({ boards }) {
 
-  console.log(boards)
+  console.log(typeof boards)
+  console.log(boards[0])
 
   //return 위쪽으로 정리하는 게 좋음
   return (
@@ -14,6 +15,7 @@ function BoardList({ boards }) {
       {
         boards.length > 0 ? 
           boards.map(board => {
+            {console.log(board.user_no)}
             <TableRow>
               <TableCell>{board.board_no}</TableCell>
               <TableCell>{board.user_no}</TableCell>
