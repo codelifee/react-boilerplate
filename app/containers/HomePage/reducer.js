@@ -24,6 +24,6 @@ const homeReducer = (state = initialState, action) =>
         draft.username = action.username.replace(/@/gi, '');
         break;
     }
-  });
+});
 
 export default homeReducer;

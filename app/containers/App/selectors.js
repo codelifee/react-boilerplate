@@ -39,6 +39,19 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const makeSelectBoardLoading = () =>
+createSelector(
+  selectGlobal,
+  globalState => globalState.boardLoding,
+);
+
+const makeSelectBoards = () => 
+  createSelector(
+    selectGlobal,
+    globalState => globalState.boards
+  )
+
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -46,4 +59,6 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectBoards,
+  makeSelectBoardLoading
 };

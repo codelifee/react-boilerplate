@@ -15,7 +15,7 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS } from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -56,4 +56,17 @@ export function repoLoadingError(error) {
     type: LOAD_REPOS_ERROR,
     error,
   };
+}
+
+export function loadBoards() {
+  return {
+    type: LOAD_BOARDS,
+  }
+}
+
+export function boardsLoaded(boards) {
+  return {
+    type: LOAD_BOARDS_SUCCESS,
+    boards,
+  }
 }

@@ -49,6 +49,8 @@ export function HomePage({
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     if (username && username.trim().length > 0) onSubmitForm();
+
+    console.log(onSubmitForm)
   }, []);
 
   const reposListProps = {
@@ -101,6 +103,8 @@ export function HomePage({
   );
 }
 
+
+// fix prop types. nothing more
 HomePage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
@@ -110,6 +114,7 @@ HomePage.propTypes = {
   onChangeUsername: PropTypes.func,
 };
 
+// get state and map it to props here. 
 const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
   username: makeSelectUsername(),

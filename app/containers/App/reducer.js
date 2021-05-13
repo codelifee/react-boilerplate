@@ -8,7 +8,7 @@
  */
 
 import produce from 'immer';
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS } from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -16,8 +16,10 @@ export const initialState = {
   error: false,
   currentUser: false,
   userData: {
-    repositories: false,
+  repositories: false,
   },
+  boardLoding: false,
+  boards: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -40,7 +42,20 @@ const appReducer = (state = initialState, action) =>
         draft.error = action.error;
         draft.loading = false;
         break;
+
+      case LOAD_BOARDS:
+        draft.boardLoding = true;
+        break;
+
+      case LOAD_BOARDS_SUCCESS:
+        draft.boards = action.boards;
+        break;
+
+      default:
+        return state; 
     }
   });
+
+
 
 export default appReducer;
