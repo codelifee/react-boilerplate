@@ -16,7 +16,7 @@ export const initialState = {
   error: false,
   currentUser: false,
   userData: {
-  repositories: false,
+   repositories: false,
   },
   boardLoding: false,
   boards: {},

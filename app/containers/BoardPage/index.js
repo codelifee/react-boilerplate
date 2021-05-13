@@ -23,7 +23,7 @@ import {
 } from 'containers/App/selectors';
 
 
-const key = 'board';
+const key = 'board';  //const는 모아주고 대문자로
 
 export function BoardPage({
   boardLoding,
@@ -31,26 +31,15 @@ export function BoardPage({
   fetchBoards,
 }) {
 
-  const boardsList = {
-    boards
-  }
-
-  // const boardsList = {
-  //   boards
-  // };
 
   useInjectReducer({ key, reducer })
   useInjectSaga({ key, saga });
 
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
-    // fetchBoards()
+    fetchBoards()
    
   }, []);
-
-  console.log(fetchBoards)
-  console.log(boards)
-  console.log(boardLoding)
 
   return (
     <Paper>
@@ -84,13 +73,14 @@ export function BoardPage({
                 </TableRow>
             </TableHead>
             <TableBody>
-               <BoardList boardsList={boards}/>
+               <BoardList boards={boards} />
             </TableBody>
         </Table>
     </Paper>
   );
 }
 
+// 참고
 BoardPage.propTypes = {
   fetchBoards: PropTypes.func,
   boardLoding: PropTypes.bool,
@@ -105,12 +95,8 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    fetchBoards: dispatch(loadBoards()),
+    fetchBoards: evt => dispatch(loadBoards()),
 
-    // onSubmitForm: evt => {
-    //   if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    //   dispatch(loadRepos());
-    // },
   };
 }
 

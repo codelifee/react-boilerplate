@@ -43,6 +43,7 @@ export function HomePage({
   onSubmitForm,
   onChangeUsername,
 }) {
+  
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 

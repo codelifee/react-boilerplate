@@ -15,7 +15,7 @@
   */
 
  export function* getBoards() {
-     const requestURL = 'http://localhost:4000/board/all';
+     const requestURL = 'http://localhost:4000/board/all'; //global로 빼주기
 
      try {
        const boards = yield call(request, requestURL);
