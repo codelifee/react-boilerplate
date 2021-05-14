@@ -16,6 +16,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import BoardPage from 'containers/BoardPage';
 import BoardView from 'containers/BoardView';
+import WritingPage from 'containers/WritingPage';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -45,6 +46,7 @@ export default function App() {
         <Route exact path="/features" component={FeaturePage} />
         <Route path="/boards" component={BoardPage} />
         <Route path="/board" component={BoardView} />
+        <Route path="/write" component={WritingPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

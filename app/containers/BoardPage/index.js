@@ -1,6 +1,7 @@
 import React, { useEffect, memo } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Button from 'components/Button'
 import { Table, TableBody, TableHead } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import { createStructuredSelector } from 'reselect';
@@ -10,6 +11,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { connect } from 'react-redux';
 import { loadBoards } from 'containers/App/actions';
+import Link from './Link'
 
 import { FormattedMessage } from 'react-intl';
 import BoardList from 'components/BoardList';
@@ -33,9 +35,9 @@ export function BoardPage({ boardLoding, boards, fetchBoards }) {
 
   return (
     <Paper>
-      <button>
+      <Link to={'/write'}>
         <FormattedMessage {...messages.registerButton} />
-      </button>
+      </Link>
       <Table>
         <TableHead>
           <TableRow>

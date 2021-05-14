@@ -1,15 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Form = styled.div`
-    width: 100%,
-    marginTop: 20,
-    overflowY: auto,
-`;
-
-const buttonStyles = css`
-  display: inline-block;
-  box-sizing: border-box;
+export default styled(Link)`
+  display: inline-flex;
   padding: 0.25em 2em;
+  margin: 1em;
   text-decoration: none;
   border-radius: 4px;
   -webkit-font-smoothing: antialiased;
@@ -28,5 +23,3 @@ const buttonStyles = css`
     color: #fff;
   }
 `;
-
-export default Form;
