@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from "react-router";
+import { useLocation } from "react-router";
 
 import Root from './Root'
 import BoardContent from './BoardContent'
@@ -9,22 +9,22 @@ import SmallBox from 'components/SmallBox'
 
 function BoardView() {
 
-    console.log(useParams)
+    const location = useLocation();
+    const board = location.state.info;
 
     return (
         <Root> 
           <BoardContent>
             <Header>
-                <div>user_name :  </div>
-                <div>board_no : </div>
+                <div>user_name : {board.user_no} </div>
+                <div>board_no : {board.board_no} </div>
             </Header>
             <div>
                 <div>
                     title
                 </div>
                 <Box>
-                    box
-                    {/* {board.board_title} */}
+                    {board.board_title}
                 </Box>
             </div>
             <div>
@@ -32,15 +32,13 @@ function BoardView() {
                     date
                 </div>
                 <SmallBox>
-                    small
-                    {/* {board.board_regdate} */}
+                    {board.board_regdate}
                 </SmallBox>
             </div>
             <div>
                 content
                 <SmallBox>
-                    small
-                    {/* {board.board_content} */}
+                    {board.board_content}
                 </SmallBox>
             </div>
         </BoardContent>
