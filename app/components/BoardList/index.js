@@ -7,10 +7,9 @@ import { deleteBoard } from 'utils/myUtils/api';
 import history from 'utils/history';
 
 function BoardList({ boards }) {
-  const redirect = board => {
+  const redirect = board_no => {
     history.push({ 
-      pathname: '/board',
-      state: {info : 'info'}
+      pathname: `/board/${board_no}`
     });
     window.location.reload();
   };

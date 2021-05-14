@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router";
 
 import Root from './Root'
 import BoardContent from './BoardContent'
@@ -9,7 +9,7 @@ import SmallBox from 'components/SmallBox'
 
 function BoardView() {
 
-    console.log()
+    console.log(useParams)
 
     return (
         <Root> 
