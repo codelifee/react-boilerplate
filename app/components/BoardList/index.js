@@ -3,7 +3,16 @@ import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
+import {deleteBoard} from 'utils/myUtils/api'
+import history from 'utils/history'
+
 function BoardList({ boards }) {
+
+  const redirect = (board_no) => {
+    history.push({pathname: `/board/${board_no}`});
+    window.location.reload();
+  }
+
   const boardList = [];
 
   {
@@ -16,8 +25,8 @@ function BoardList({ boards }) {
             <TableCell>{board.board_title}</TableCell>
             <TableCell>{board.board_content}</TableCell>
             <TableCell>{board.board_regdate}</TableCell>
-            <TableCell>내용 보기</TableCell>
-            <TableCell>삭제하기</TableCell>
+            <TableCell onClick={() => redirect(board.board_no)}>내용 보기</TableCell>
+            <TableCell onClick={() =>deleteBoard(board.board_no)}>삭제하기</TableCell>
           </TableRow>
         );
 
@@ -36,6 +45,3 @@ function BoardList({ boards }) {
 
 export default BoardList;
 
-// onClick={redirect} style={{cursor: 'pointer'}
-
-// onClick={handleDelete} style={{cursor: 'pointer'}

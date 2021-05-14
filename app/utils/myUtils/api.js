@@ -1,6 +1,6 @@
-// import axios from 'utils/myUtils/axios.js';
+import axios from './axios';
 
-export const handleDelete = board_no => {
+export const deleteBoard = board_no => {
   axios
     .delete('board', {
       data: {
@@ -18,7 +18,6 @@ export const postBoard = form => {
   axios
     .post('board', form)
     .then(res => {
-      console.log(res);
       window.location.reload();
       alert('register completed');
     })
