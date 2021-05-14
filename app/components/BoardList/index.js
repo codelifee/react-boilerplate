@@ -7,11 +7,10 @@ import { deleteBoard } from 'utils/myUtils/api';
 import history from 'utils/history';
 
 function BoardList({ boards }) {
-
   const redirect = board => {
     history.push({ 
       pathname: '/board',
-      state: {info: 'hello'}
+      state: {info : 'info'}
     });
     window.location.reload();
   };
@@ -28,7 +27,7 @@ function BoardList({ boards }) {
             <TableCell>{board.board_title}</TableCell>
             <TableCell>{board.board_content}</TableCell>
             <TableCell>{board.board_regdate}</TableCell>
-            <TableCell onClick={() => redirect(board)}>
+            <TableCell onClick={() => redirect(board.board_no)}>
               내용 보기
             </TableCell>
             <TableCell onClick={() => deleteBoard(board.board_no)}>

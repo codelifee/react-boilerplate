@@ -51,6 +51,13 @@ const makeSelectBoards = () =>
     globalState => globalState.boards
   )
 
+const makeSelctBoard = () => {
+  createSelector(
+    selectGlobal,
+    globalState => globalState.board
+  )
+}
+
 
 export {
   selectGlobal,
@@ -60,5 +67,6 @@ export {
   makeSelectRepos,
   makeSelectLocation,
   makeSelectBoards,
-  makeSelectBoardLoading
+  makeSelectBoardLoading,
+  makeSelctBoard
 };

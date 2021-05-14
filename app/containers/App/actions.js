@@ -70,3 +70,10 @@ export function boardsLoaded(boards) {
     boards,
   }
 }
+
+export function boardStored() {
+  return {
+    type: STORE_BOARD,
+    board
+  }
+}
