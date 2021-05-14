@@ -1,5 +1,5 @@
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-let history = useHistory();
+const history = useHistory();
 
 export default history;
