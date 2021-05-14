@@ -1,47 +1,35 @@
-export const handleDelete = () => {
-    axios
-    .delete("board", {
+// import axios from 'utils/myUtils/axios.js';
+
+export const handleDelete = board_no => {
+  axios
+    .delete('board', {
       data: {
-        "board_no" : board_no
-      }
+        board_no,
+      },
     })
-    .then((res) => {
-      console.log(res)
-      window.location.reload()
+    .then(res => {
+      console.log(res);
+      window.location.reload();
     })
-    .catch((err) => console.log(err));
-}
-
-export const postBoard = () => {
-
-    axios
-    .post("board", form)
-    .then((res) => {
-        console.log(res)
-        window.location.reload()
-        alert("register completed")
-    })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 };
 
-export  async function fetchBoardDataAll() {
-    const request = await axios.get("board/all")
+export const postBoard = form => {
+  axios
+    .post('board', form)
     .then(res => {
-        setBoards(res.data);
-        
+      console.log(res);
+      window.location.reload();
+      alert('register completed');
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
+};
 
-    return request;
-}
+export async function fetchBoardData(boardId) {
+  const request = await axios
+    .get(`board/${boardId}`)
+    .then(res => {})
+    .catch(err => console.log(err));
 
-export async function fetchBoardData() {
-    const request = await axios.get(`board/${boardId}`)
-    .then(res => {
-        setBoard(res.data[0])
-
-    })
-    .catch(err => console.log(err))
-
-    return request;
+  return request;
 }

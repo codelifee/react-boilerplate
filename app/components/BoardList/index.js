@@ -1,47 +1,40 @@
 import React from 'react';
 
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
 function BoardList({ boards }) {
+  const boardList = [];
 
-  console.log(typeof boards)
-  console.log(boards[0])
-
-  //return 위쪽으로 정리하는 게 좋음
-  return (
-    <>
-      {
-        boards.length > 0 ? 
-          boards.map(board => {
-            {console.log(board.user_no)}
-            <TableRow>
-              <TableCell>{board.board_no}</TableCell>
-              <TableCell>{board.user_no}</TableCell>
-              <TableCell>{board.board_title}</TableCell>
-              <TableCell>{board.board_content}</TableCell>
-              <TableCell>{board.board_regdate}</TableCell>
-              <TableCell>내용 보기</TableCell>
-              <TableCell>삭제하기</TableCell>
-            </TableRow>
-          })
-          :
+  {
+    boards.length > 0 ? (
+      boards.map(board => {
+        const content = (
           <TableRow>
-            <TableCell>Nothing is here</TableCell>
+            <TableCell>{board.board_no}</TableCell>
+            <TableCell>{board.user_no}</TableCell>
+            <TableCell>{board.board_title}</TableCell>
+            <TableCell>{board.board_content}</TableCell>
+            <TableCell>{board.board_regdate}</TableCell>
+            <TableCell>내용 보기</TableCell>
+            <TableCell>삭제하기</TableCell>
           </TableRow>
-      }
-    </>
-  )
+        );
+
+        boardList.push(content);
+      })
+    ) : (
+      <TableRow>
+        <TableCell>Nothing is here</TableCell>
+      </TableRow>
+    );
+  }
+
+  // return 위쪽으로 정리하는 게 좋음
+  return <>{boardList}</>;
 }
 
-// BoardView.propTypes = {
-//   boards
-// };
-
 export default BoardList;
-
-
 
 // onClick={redirect} style={{cursor: 'pointer'}
 
