@@ -7,6 +7,7 @@ import Header from './Header'
 import Box from 'components/box'
 import SmallBox from 'components/SmallBox'
 
+
 function BoardView() {
 
     const location = useLocation();

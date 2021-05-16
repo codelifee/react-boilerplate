@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import { deleteBoard } from 'utils/myUtils/api';
 import history from 'utils/history';
 
+//데이터 변경하는 로직 넣어보기 -> redux
 function BoardList({ boards }) {
 
   const redirect = board => {

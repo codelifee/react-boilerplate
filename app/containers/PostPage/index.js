@@ -26,7 +26,7 @@ import SmallInput from 'components/SmallInput'
 
 const key = 'home';
 
-export function WritingPage({
+export function PostPage({
   registerLoding,
   registerError,
   board,
@@ -116,4 +116,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(WritingPage);
+)(PostPage);
