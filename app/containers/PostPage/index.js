@@ -14,15 +14,15 @@ import { useInjectSaga } from 'utils/injectSaga';
 // import { loadRepos } from '../App/actions';
 // import { changeUsername } from './actions';
 // import { makeSelectUsername } from './selectors';
-import reducer from './reducer';
+import Root from 'components/Root';
+import BoardContent from 'components/BoardContent';
+import SmallBox from 'components/SmallBox';
+import Box from 'components/Box';
+import Input from 'components/Input';
+import SmallInput from 'components/SmallInput';
+import Button from './Button';
 import saga from './saga';
-import Root from 'components/Root'
-import BoardContent from 'components/BoardContent'
-import Button from './Button'
-import SmallBox from 'components/SmallBox'
-import Box from 'components/Box'
-import Input from 'components/Input'
-import SmallInput from 'components/SmallInput'
+import reducer from './reducer';
 
 const key = 'home';
 
@@ -33,73 +33,54 @@ export function PostPage({
   onSubmitForm,
   onChangeBoard,
 }) {
-  
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
   return (
-    <Root style={{marginTop: 70}}>
-    <BoardContent>
+    <Root style={{ marginTop: 70 }}>
+      <BoardContent>
         <div>
-            <div>
-                user id
-            </div>
-            <SmallBox>
-                <SmallInput 
-                name="user_no"
-                onChange={onChangeBoard}
-                type="textarea" />
-            </SmallBox>
+          <div>user id</div>
+          <SmallBox>
+            <SmallInput
+              name="user_no"
+              onChange={onChangeBoard}
+              type="textarea"
+            />
+          </SmallBox>
         </div>
         <div>
-            <div>
-                board title
-            </div>
-            <Box>
-                <Input 
-                name="title"
-                onChange={onChangeBoard}
-                type="textarea" />
-            </Box>
+          <div>board title</div>
+          <Box>
+            <Input name="title" onChange={onChangeBoard} type="textarea" />
+          </Box>
         </div>
         <div>
-            <div>
-                board content
-            </div>
-            <Box>
-                <Input 
-                name="content"
-                onChange={onChangeBoard}
-                type="textarea"
-                 />
-            </Box>
+          <div>board content</div>
+          <Box>
+            <Input name="content" onChange={onChangeBoard} type="textarea" />
+          </Box>
         </div>
         <div>
-            <Button
-            onClick={onSubmitForm}
-            >
-              Register
-            </Button>
+          <Button onClick={onSubmitForm}>Register</Button>
         </div>
-    </BoardContent>
-</Root>
+      </BoardContent>
+    </Root>
   );
 }
 
-
-// get state and map it to props here. 
+// get state and map it to props here.
 const mapStateToProps = createStructuredSelector({
   // boardTitle: makeSelectRepos(),
-  // boardContent: makeSelectUsername()  
+  // boardContent: makeSelectUsername()
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeBoard: e => {
       e.preventDefault();
-      
 
-      dispatch(changeBoard(e.target.name, e.target.value))
+      dispatch(changeBoard(e.target.name, e.target.value));
     },
     onSubmitForm: e => {
       if (evt !== undefined && e.preventDefault) evt.preventDefault();

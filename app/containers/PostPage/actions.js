@@ -11,6 +11,6 @@ export function changeBoard(boardTitle, boardContent) {
   return {
     type: CHANGE_BOARD,
     boardTitle,
-    boardContent
+    boardContent,
   };
 }

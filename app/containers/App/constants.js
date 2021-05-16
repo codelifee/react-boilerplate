@@ -16,6 +16,6 @@ export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const LOAD_BOARDS = 'boilerplate/App/LOAD_BOARDS';
 export const LOAD_BOARDS_SUCCESS = 'boilerplate/App/LOAD_BOARDS_SUCCESS';
 
-//error 추가하기
+// error 추가하기
 
 export const STORE_BOARD = 'boilerplate/App/STORE_BOARD';
