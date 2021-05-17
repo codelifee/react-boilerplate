@@ -19,17 +19,17 @@ export const postBoard = form => {
 
   console.log(form)
 
-  axios
+  return axios
     .post('boards', form)
-    .then(res => {
-      // window.location.reload();
-      boardStored()
-      alert('register completed');
-    })
-    .catch(err => {
-      storeBoardError()
-      alert('error')
-    });
+    // .then(res => {
+    //   // window.location.reload();
+    //   boardStored()
+    //   // alert('register completed');
+    // })
+    // .catch(err => {
+    //   storeBoardError()
+    //   // alert('error')
+    // });
 };
 
 

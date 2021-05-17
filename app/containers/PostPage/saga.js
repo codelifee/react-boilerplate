@@ -8,12 +8,34 @@ import { boardStored, storeBoardError } from 'containers/App/actions';
 
 import {postBoard} from 'utils/myUtils/api';
 import { makeSelectPost } from 'containers/PostPage/selectors';
+import request from 'utils/request'
+
 
 
 export function* uploadBoard() {
   const board = yield select(makeSelectPost());
+  const requestURL = 'http://localhost:4000/boards';
 
-  yield call(postBoard(board))
+  const options = {
+    method: "POST",
+    body: JSON.stringify(board),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+  }
+
+  try {
+    const response = yield call(request, requestURL, options)
+
+    console.log(response)
+
+    yield put(boardStored());
+
+  } catch(err) {
+    console.log(err)
+
+    yield put(storeBoardError());
+  }
+
+
   
 }
 
