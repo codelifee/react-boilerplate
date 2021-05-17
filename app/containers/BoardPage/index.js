@@ -65,7 +65,7 @@ export function BoardPage({ boardLoding, boards, fetchBoards }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <BoardList boards={boards} />\
+          <BoardList boards={boards} />
         </TableBody>
       </Table>
     </Paper>

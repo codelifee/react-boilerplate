@@ -15,6 +15,9 @@ export const deleteBoard = board_no => {
 };
 
 export const postBoard = form => {
+
+  console.log(form)
+
   axios
     .post('board', form)
     .then(res => {

@@ -15,7 +15,9 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS } from './constants';
+import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS,
+  STORE_BOARD,
+  STORE_BOARD_SUCCESS, STORE_BOARD_ERROR } from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -71,9 +73,22 @@ export function boardsLoaded(boards) {
   }
 }
 
-export function boardStored() {
+export function storeBoard() {
   return {
     type: STORE_BOARD,
-    board
+  }
+}
+
+export function boardStored() {
+  return {
+    type: STORE_BOARD_SUCCESS,
+
+  }
+}
+
+export function storeBoardError() {
+  return {
+    type: STORE_BOARD_ERROR,
+
   }
 }

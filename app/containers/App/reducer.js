@@ -8,7 +8,12 @@
  */
 
 import produce from 'immer';
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS, STROE_BOARD } from './constants';
+import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, LOAD_BOARDS, LOAD_BOARDS_SUCCESS, 
+  LOAD_BOARDS_ERROR,
+  STORE_BOARD,
+  STORE_BOARD_SUCCESS,
+  STORE_BOARD_ERROR
+} from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -18,15 +23,20 @@ export const initialState = {
   userData: {
    repositories: false,
   },
-  boardLoding: false,
-  boards: {},
 
-  board: {}
+  boardLoding: false,
+  boardLodingError: false,
+  boards: {},
+  
+  storeBoard: false,
+  storeBoardError: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const appReducer = (state = initialState, action) =>
   produce(state, draft => {
+
+
     switch (action.type) {
       case LOAD_REPOS:
         draft.loading = true;
@@ -53,15 +63,24 @@ const appReducer = (state = initialState, action) =>
         draft.boards = action.boards;
         break;
 
-      case STROE_BOARD:
-        draft.board = action.board;
+      case LOAD_BOARDS_ERROR:
+        draft.boardLodingError = true;
+      break;
+
+      case STORE_BOARD:
         break;
+
+      case STORE_BOARD_SUCCESS:
+        draft.storeBoard = true;
+      
+      case STORE_BOARD_ERROR: 
+        draft.storeBoardError = true;
 
       default:
         return state; 
     }
-  });
 
+  });
 
 
 export default appReducer;

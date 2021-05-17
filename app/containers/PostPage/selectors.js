@@ -2,12 +2,13 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 // where does this state come from?
-const selectHome = state => state.home || initialState;
+const selectPost = state => state.post || initialState;
 
-const makeSelectUsername = () =>
+const makeSelectPost = () =>
+
   createSelector(
-    selectHome,
-    homeState => homeState.username,
+    selectPost,
+    postState => postState.content,
   );
 
-export { selectHome, makeSelectUsername };
+export { selectPost, makeSelectPost };

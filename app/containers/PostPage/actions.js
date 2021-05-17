@@ -1,4 +1,4 @@
-import { CHANGE_BOARD } from './constants';
+import { CHANGE_TITLE, CHANGE_CONTENT } from './constants';
 
 /**
  * Changes the input field of the form
@@ -7,10 +7,16 @@ import { CHANGE_BOARD } from './constants';
  *
  * @return {object} An action object with a type of CHANGE_USERNAME
  */
-export function changeBoard(boardTitle, boardContent) {
+export function changeTitle(boardTitle) {
   return {
-    type: CHANGE_BOARD,
+    type: CHANGE_TITLE,
     boardTitle,
+  };
+}
+
+export function changeContent(boardContent) {
+  return {
+    type: CHANGE_CONTENT,
     boardContent,
   };
 }

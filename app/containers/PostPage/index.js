@@ -5,15 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-// import {
-//   makeSelectRepos,
-//   makeSelectLoading,
-//   makeSelectError,
-// } from 'containers/App/selectors';
 
-// import { loadRepos } from '../App/actions';
-// import { changeUsername } from './actions';
-// import { makeSelectUsername } from './selectors';
 import Root from 'components/Root';
 import BoardContent from 'components/BoardContent';
 import SmallBox from 'components/SmallBox';
@@ -23,6 +15,9 @@ import SmallInput from 'components/SmallInput';
 import Button from './Button';
 import saga from './saga';
 import reducer from './reducer';
+
+import { changeTitle, changeContent } from './actions' 
+import { storeBoard } from '../App/actions';
 
 const key = 'home';
 
@@ -44,7 +39,6 @@ export function PostPage({
           <SmallBox>
             <SmallInput
               name="user_no"
-              onChange={onChangeBoard}
               type="textarea"
             />
           </SmallBox>
@@ -80,11 +74,19 @@ export function mapDispatchToProps(dispatch) {
     onChangeBoard: e => {
       e.preventDefault();
 
-      dispatch(changeBoard(e.target.name, e.target.value));
+      if(e.target.name === 'title') {
+        dispatch(changeTitle(e.target.value));
+      } else {
+        dispatch(changeContent(e.target.value));
+      }
+
+      
     },
+
     onSubmitForm: e => {
-      if (evt !== undefined && e.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
+      e.preventDefault();
+      
+      dispatch(storeBoard());
     },
   };
 }

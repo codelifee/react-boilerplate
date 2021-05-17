@@ -1,22 +1,34 @@
 import produce from 'immer';
-import { CHANGE_BOARD } from './constants';
+import { CHANGE_TITLE, CHANGE_CONTENT } from './constants';
 
 // The initial state of the App
 export const initialState = {
-  boardTitle: '',
-  boardContent: '',
+  content : {
+    boardTitle: '',
+    boardContent: '',
+  }
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const writingReducer = (state = initialState, action) =>
+const postReducer = (state = initialState, action) =>
   produce(state, draft => {
+
+    console.log(state)
+
     switch (action.type) {
-      case CHANGE_BOARD:
+      case CHANGE_TITLE:
         // Delete prefixed '@' from the github username
-        draft.boardTtile = action.boardTitle;
-        draft.boardContent = action.boardContent;
+        state.content.boardTitle = action.boardTitle;
+        break;
+    }
+
+    switch (action.type) {
+      case CHANGE_CONTENT:
+        // Delete prefixed '@' from the github username
+        state.content.boardContent = action.boardContent;
         break;
     }
   });
 
-export default writingReducer;
+
+export default postReducer;
