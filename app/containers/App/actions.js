@@ -89,6 +89,5 @@ export function boardStored() {
 export function storeBoardError() {
   return {
     type: STORE_BOARD_ERROR,
-
   }
 }

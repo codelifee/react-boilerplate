@@ -13,7 +13,6 @@ export const initialState = {
 const postReducer = (state = initialState, action) =>
   produce(state, draft => {
 
-    console.log(state)
 
     switch (action.type) {
       case CHANGE_TITLE:

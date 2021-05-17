@@ -18,18 +18,21 @@ import reducer from './reducer';
 
 import { changeTitle, changeContent } from './actions' 
 import { storeBoard } from '../App/actions';
+import { makeSelectBoardError } from 'containers/App/selectors'
 
 const key = 'home';
 
 export function PostPage({
   registerLoding,
-  registerError,
-  board,
+  error,
   onSubmitForm,
   onChangeBoard,
 }) {
+
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+
+  console.log(error)
 
   return (
     <Root style={{ marginTop: 70 }}>
@@ -65,8 +68,7 @@ export function PostPage({
 
 // get state and map it to props here.
 const mapStateToProps = createStructuredSelector({
-  // boardTitle: makeSelectRepos(),
-  // boardContent: makeSelectUsername()
+  error: makeSelectBoardError(),
 });
 
 export function mapDispatchToProps(dispatch) {

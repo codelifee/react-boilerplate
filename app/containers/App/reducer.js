@@ -28,16 +28,20 @@ export const initialState = {
   boardLodingError: false,
   boards: {},
   
+  storeBoardLoding: false,
   storeBoard: false,
   storeBoardError: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const appReducer = (state = initialState, action) =>
+
   produce(state, draft => {
 
+    console.log(state)
 
     switch (action.type) {
+
       case LOAD_REPOS:
         draft.loading = true;
         draft.error = false;
@@ -65,16 +69,19 @@ const appReducer = (state = initialState, action) =>
 
       case LOAD_BOARDS_ERROR:
         draft.boardLodingError = true;
-      break;
+        break;
 
       case STORE_BOARD:
+        draft.storeBoardLoding = true;
         break;
 
       case STORE_BOARD_SUCCESS:
         draft.storeBoard = true;
+        break;
       
       case STORE_BOARD_ERROR: 
         draft.storeBoardError = true;
+        break;
 
       default:
         return state; 

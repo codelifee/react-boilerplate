@@ -13,17 +13,7 @@ import { makeSelectPost } from 'containers/PostPage/selectors';
 export function* uploadBoard() {
   const board = yield select(makeSelectPost());
 
-  try {
-    yield call(postBoard(board))
-
-    
-  } catch(err) {
-
-    yield call(storeBoardError())
-    console.log('error')
-  }
-
-
+  yield call(postBoard(board))
   
 }
 

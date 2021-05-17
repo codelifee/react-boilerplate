@@ -1,4 +1,5 @@
 import axios from './axios';
+import {boardStored, storeBoardError} from 'containers/App/actions';
 
 export const deleteBoard = board_no => {
   axios
@@ -19,13 +20,18 @@ export const postBoard = form => {
   console.log(form)
 
   axios
-    .post('board', form)
+    .post('boards', form)
     .then(res => {
-      window.location.reload();
+      // window.location.reload();
+      boardStored()
       alert('register completed');
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      storeBoardError()
+      alert('error')
+    });
 };
+
 
 export async function fetchBoardData(boardId) {
   const request = await axios
